@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>대시보드</title>
+</head>
+<body>
+    <h2>{{welcomusesr}}</h2>
+    <h2>{{user_id}} 님의 계좌</h2>
+    <p>현재 잔액 : {{balance}}</p>
+
+    <form method="POST" action="/input">
+        <input type="hidden" name="user_id" value={{user_id}}>
+
+        <label>입금액:</label>
+        <input type="text" name="money" required><br><br>
+        <button type="submit">입금</button>
+    </form>
+    
+    <form method="POST" action="/output">
+        <input type="hidden" name="user_id" value={{user_id}}>
+
+        <label>출금액:</label>
+        <input type="text" name="money" required><br><br>
+        <button type="submit">출금</button>
+    </form>
+
+    <p><a href="/login">로그아웃</a></p>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    {% if message %}
+        <p style="color: blue;">{{ message }}</p>
+    {% endif %}
+</body>
+</html>
